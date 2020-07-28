@@ -96,7 +96,7 @@ public class LeastRecentlyUsedCache<K, V> {
 	 * The default number of seconds after which an entry is considered
 	 * <em>stale</em> if it hasn't been accessed for that amount of time.
 	 */
-	public static final long DEFAULT_THRESHOLD_SECS = 30 * 60; // 30 minutes
+	public static final long DEFAULT_THRESHOLD_SECS = (long) 30 * 60; // 30 minutes
 	/**
 	 * The cache's default maximum capacity.
 	 */
@@ -767,4 +767,4 @@ public class LeastRecentlyUsedCache<K, V> {
 					.append("]").toString();
 		}
 	}
-}
+		}
