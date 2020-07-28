@@ -326,10 +326,9 @@ public class HonoClient {
 			String cmd = getCommand(coapResponse);
 
 			if (cmd != null) {
-				FileOutputStream out;
 				if (file == null) {
 					file = new File("response-" + coapResponse.advanced().getTokenString());
-					out = new FileOutputStream(file);
+					try (java.io.FileOutputStream out = new java.io.FileOutputStream(org.eclipse.californium.extplugtests.HonoClient.file)) 
 				} else {
 					out = new FileOutputStream(file, true);
 				}
