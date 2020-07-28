@@ -62,20 +62,20 @@ public class Catalog {
 
 			String jarFileName = URLDecoder.decode(packageURL.getFile(), "UTF-8");
 			jarFileName = jarFileName.substring(5, jarFileName.indexOf("!"));
+			try (java.util.jar.JarFile jar = new java.util.jar.JarFile(jarFileName)) {
+				java.util.Enumeration<java.util.jar.JarEntry> jarEntries = jar.entries();
+				while (jarEntries.hasMoreElements()) {
+					java.lang.String clazz = jarEntries.nextElement().getName();
+					if (clazz.startsWith(packageName) && (clazz.length() > (packageName.length() + 5))) {
+						clazz = clazz.substring(0, clazz.length() - 6);// remove ".class"
 
-			JarFile jar = new JarFile(jarFileName);
-			Enumeration<JarEntry> jarEntries = jar.entries();
+						clazz = clazz.replace("/", ".");// convert to canonical name
 
-			while (jarEntries.hasMoreElements()) {
-				String clazz = jarEntries.nextElement().getName();
-				if (clazz.startsWith(packageName) && clazz.length() > packageName.length() + 5) {
-					clazz = clazz.substring(0, clazz.length()-6); // remove ".class"
-					clazz = clazz.replace("/", "."); // convert to canonical name
-					loadClass(Class.forName(clazz));
-				}
+						loadClass(java.lang.Class.forName(clazz));
+					}
+				} 
+				jar.close();
 			}
-
-			jar.close();
 
 		} else {
 			URI uri = new URI(packageURL.toString());
