@@ -325,7 +325,7 @@ public class Option implements Comparable<Option> {
 	 */
 	@Override
 	public int hashCode() {
-		return number*31 + value.hashCode();
+		return number*31 + java.util.Arrays.hashCode(value) ;
 	}
 	
 	/* (non-Javadoc)
