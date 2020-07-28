@@ -45,7 +45,7 @@ public class EndpointContextUtil {
 		for (String key : keys) {
 			String value1 = context1.get(key);
 			String value2 = context2.get(key);
-			boolean match = (value1 == value2) || (null != value1 && value1.equals(value2));
+			boolean match = value1.equals(value2) || (null != value1 && value1.equals(value2));
 			if (!match && !warn) {
 				/* no warnings => fast return */
 				return false;

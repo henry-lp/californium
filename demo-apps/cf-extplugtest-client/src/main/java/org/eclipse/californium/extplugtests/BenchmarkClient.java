@@ -391,7 +391,7 @@ public class BenchmarkClient {
 			}
 		}
 
-	};
+	}
 
 	private class FeedObserver extends MyResourceObserverAdapter {
 
@@ -899,7 +899,7 @@ public class BenchmarkClient {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 
-		startManagamentStatistic();
+		org.eclipse.californium.extplugtests.BenchmarkClient.startManagamentStatistic();
 		config.networkConfigHeader = CONFIG_HEADER;
 		config.networkConfigDefaultHandler = DEFAULTS;
 		config.networkConfigFile = CONFIG_FILE;
@@ -966,7 +966,7 @@ public class BenchmarkClient {
 				!config.stop ? "none-stop " : "", secure ? "secure " : "", overallRequests, proxyMessage, uri);
 
 		if (config.reverse != null && overallReverseResponses > 0) {
-			if (config.reverse.min == config.reverse.max) {
+			if (org.eclipse.californium.extplugtests.BenchmarkClient.config.reverse.min.equals(org.eclipse.californium.extplugtests.BenchmarkClient.config.reverse.max)) {
 				System.out.format("Expect %d notifies, interval %d [ms]%n", overallReverseResponses,
 						config.reverse.min);
 			} else {
@@ -1241,7 +1241,7 @@ public class BenchmarkClient {
 		Logger statisticsLogger = printManagamentStatistic(args, reverseResponseNanos);
 
 		// stop and collect per client requests
-		final int statistic[] = new int[clients];
+		final int statistic = new int[clients];
 		final CountDownLatch stop = new CountDownLatch(clients);
 		for (int index = 0; index < clients; ++index) {
 			final int currentIndex = index;

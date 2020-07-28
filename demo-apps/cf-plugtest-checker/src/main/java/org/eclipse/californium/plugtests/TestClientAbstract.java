@@ -902,7 +902,7 @@ public abstract class TestClientAbstract {
 	 */
 	protected boolean checkDiscoveryAttributes(String expextedAttribute, String actualDiscovery) {
 
-		if (actualDiscovery == "") {
+		if (actualDiscovery.equals("")) {
 			System.err.println("Empty Link Format, check manually");
 			return false;
 		}
