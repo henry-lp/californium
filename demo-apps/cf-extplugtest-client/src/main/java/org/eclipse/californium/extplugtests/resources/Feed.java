@@ -212,7 +212,7 @@ public class Feed extends CoapResource {
 			if (changeScheduled.compareAndSet(false, true)) {
 				if (intervalMin < intervalMax) {
 					float r = random.nextFloat();
-					interval = (int) ((r * r * r) * (intervalMax - intervalMin)) + intervalMin;
+					interval =  ((int) ((((double) r * (double) r) * r) * (intervalMax - intervalMin))) + intervalMin;
 					timeout = intervalMax;
 				} else {
 					interval = intervalMin;
