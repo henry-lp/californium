@@ -96,7 +96,7 @@ public class InMemoryConnectionStore implements ResumptionSupportingConnectionSt
 	private static final int DEFAULT_SMALL_EXTRA_CID_LENGTH = 2; // extra cid bytes additionally to required bytes for small capacity.
 	private static final int DEFAULT_LARGE_EXTRA_CID_LENGTH = 3; // extra cid bytes additionally to required bytes for large capacity.
 	private static final int DEFAULT_CACHE_SIZE = 150000;
-	private static final long DEFAULT_EXPIRATION_THRESHOLD = 36 * 60 * 60; // 36h
+	private static final long DEFAULT_EXPIRATION_THRESHOLD = ((long) 36 * 60) * 60; // 36h
 	private final SessionCache sessionCache;
 	protected final LeastRecentlyUsedCache<ConnectionId, Connection> connections;
 	protected final ConcurrentMap<InetSocketAddress, Connection> connectionsByAddress;

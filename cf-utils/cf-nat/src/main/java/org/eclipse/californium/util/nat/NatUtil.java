@@ -315,7 +315,7 @@ public class NatUtil implements Runnable {
 
 		public void forward(DatagramPacket packet) throws IOException {
 			if (manipulateMessage()) {
-				final long delay = delayMillis + random.nextInt(randomDelayMillis);
+				final long delay = (long) delayMillis + random.nextInt(randomDelayMillis);
 				byte[] data = Arrays.copyOfRange(packet.getData(), packet.getOffset(),
 						packet.getOffset() + packet.getLength());
 				final DatagramPacket clone = new DatagramPacket(data, data.length, packet.getSocketAddress());
