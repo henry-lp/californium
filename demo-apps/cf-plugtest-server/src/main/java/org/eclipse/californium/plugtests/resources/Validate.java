@@ -131,7 +131,7 @@ public class Validate extends CoapResource {
 			data = payload;
 			dataCf = cf;
 			
-			etag = ByteBuffer.allocate(4).putInt( data.hashCode() ).array();
+			etag = ByteBuffer.allocate(4).putInt(java.util.Arrays.hashCode(data) ).array();
 	
 			// set payload and content type
 			getAttributes().clearContentType();
