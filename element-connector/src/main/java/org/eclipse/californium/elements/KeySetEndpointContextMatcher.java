@@ -151,7 +151,7 @@ public abstract class KeySetEndpointContextMatcher implements EndpointContextMat
 			String firstVirtualHost = firstContext.getVirtualHost();
 			String otherVirtualHost = secondContext.getVirtualHost();
 
-			return firstVirtualHost == otherVirtualHost ||
+			return firstVirtualHost.equals(otherVirtualHost) ||
 					(firstVirtualHost != null && firstVirtualHost.equals(otherVirtualHost));
 		}
 	}
